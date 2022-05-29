@@ -6,7 +6,7 @@ let path = "."; // версия с относительными путями
 // let path = __dirname; // версия с абсолютными путями
 
 let files_info = require("./tools").get_list_queue(path); // current dir
-
+console.log(`this files_info: ${files_info}`);
 files_info.sort((a, b) => a.file_path < b.file_path? -1: +1); // группируем по папкам
 // files_info.sort((a, b) => b.file_size - a.file_size);
 

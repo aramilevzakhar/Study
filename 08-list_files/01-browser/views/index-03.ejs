@@ -13,26 +13,47 @@
 
     <table class="dialog">
         <tr>
-            <th><a href="">Name</a></th>
-            <th>Size</th>
-            <th>Type</th>
-            <th>Downloads</th>
+            <th>Имя</th>
+            <th>Размер</th>
+            <th>Тип</th>
+            <th>Скачать</th>
         </tr>   
+        <% let b = 0, n=2; %>
         <% for (let i = 0; i < list_files.length; i++) {%>
-            <tr>
-                <td class="item">
-                    <a href="/docs/<%=i%>"><%=list_files[i].file_name%></a>
-                </td>   
-                <td class="item">
-                    <a href="#"><%=list_files[i].file_size%></a>
-                </td>  
-                <td class="item">
-                    <a href="#"><%=list_files[i].file_type%></a>
-                </td>  
-                <td class="item">
-                    <a href="/q8/<%=i%>" download>Downloads this file</a>
-                </td>  
-            </tr>
+            <% if (list_files[i].file_type != "Папка") {%>
+                <tr>
+                    <td class="item" style="padding-left: 7%;">
+                        <a href="/docs/<%=i%>"><%=list_files[i].file_name%></a>
+                    </td>   
+                    <td class="item">
+                        <a href="#"><%=list_files[i].file_size%></a>
+                    </td>  
+                    <td class="item">
+                        <a href="/q33/<%=i%>"><%=list_files[i].file_type%></a>
+                    </td>  
+                    <td class="item">
+                        <a href="/q8/<%=i%>" download>Скачать</a>
+                    </td>  
+                </tr>
+                <!-- <p><%=b%></p> -->
+            <%} else {%>
+                <tr>
+                    <td class="item">
+                        <a href="#"><%=list_files[i].file_name%></a>
+                    </td>   
+                    <td class="item">
+                        <a href="#"><%=list_files[i].file_size%></a>
+                    </td>  
+                    <td class="item">
+                        <a href="#"><%=list_files[i].file_type%></a>
+                    </td>  
+                    <td class="item">
+                        <!-- <a href="/q8/<%=i%>" download>Скачать</a> -->
+                    </td>  
+                </tr>
+                <% n += 5 %>
+            <%} %>
+
         <%} %>
     </table>
 
